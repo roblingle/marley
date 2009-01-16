@@ -53,7 +53,7 @@ Of course, you have to ensure that there is at least some content on the server 
 
 == Synchronizing content
 
-Marley has no administrative interface for writing articles inside some silly <tt><textarea></tt>. It assumes you like to write in your favorite text editor, using Markdown, previewing on the fly, and just synchronize when you're ready to publish.
+Marley has no administrative interface for writing articles inside some silly <tt>textarea</tt>. It assumes you like to write in your favorite text editor, using Markdown, previewing on the fly, and just synchronize when you're ready to publish.
   
 There are several ways how to do that:
 

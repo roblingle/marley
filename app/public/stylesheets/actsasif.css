@@ -1,0 +1,28 @@
+#posts{
+  width: 800px;
+  margin-right: 20px;
+  margin-left: auto;
+}
+
+#posts h1{
+  border: 1px solid red;
+}
+
+#posts .title{
+	font-size: 300%;
+    font-family: Helvetica, Arial;
+	color: #4A61D8;
+}
+#posts .title{
+	text-decoration:none;
+	color: #4A61D8
+}
+.meta{ 
+	color: #888;
+	font-size:150%;
+}
+
+.perex{
+	margin: 10px 0 30px 15px;
+	color: #888;
+}
