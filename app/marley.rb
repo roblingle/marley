@@ -75,7 +75,7 @@ end
 get '/' do
   @posts = Marley::Post.published
   @page_title = "#{CONFIG['blog']['title']}"
-  erb :index
+  haml :index
 end
 
 get '/feed' do
@@ -90,11 +90,11 @@ get '/feed/comments' do
   builder :comments
 end
 
-get '/:post_id.html' do
+get '/:post_id' do
   @post = Marley::Post[ params[:post_id] ]
   throw :halt, [404, not_found ] unless @post
   @page_title = "#{@post.title} #{CONFIG['blog']['name']}"
-  erb :post 
+  haml :post 
 end
 
 post '/:post_id/comments' do
@@ -109,14 +109,14 @@ post '/:post_id/comments' do
   # puts params.inspect
   @comment = Marley::Comment.create( params )
   if @comment.valid?
-    redirect "/"+params[:post_id].to_s+'.html?thank_you=#comment_form'
+    redirect "/"+params[:post_id].to_s+'?thank_you=#comment_form'
   else
     @page_title = "#{@post.title} #{CONFIG['blog']['name']}"
-    erb :post
+    haml :post
   end
 end
 get '/:post_id/comments' do 
-  redirect "/"+params[:post_id].to_s+'.html#comments'
+  redirect "/"+params[:post_id].to_s+'#comments'
 end
 
 get '/:post_id/feed' do
@@ -135,6 +135,11 @@ post '/sync' do
     # Synchronize articles in data directory to Github repo
     system "cd #{CONFIG['data_directory']}; git pull origin master"
   end
+end
+
+get '/style.css' do
+  header 'Content-Type' => 'text/css; charset=utf-8'
+  sass :style
 end
 
 get '/about' do
