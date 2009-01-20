@@ -1,11 +1,7 @@
-<h1><%= CONFIG['blog']['title'] %></h1>
-
-<ul id="posts">
-<% @posts.each do |post| %>
-<li>
-  <span class="title">&quot;<a href="/<%= post.id %>.html"><%= post.title %></a>&quot;</span>
-  <span class="meta"> &mdash;<%= human_date post.published_on %> / <%= post.comments.size %> comments</span>
-  <div class="perex"><%= post.perex %></div>
-</li>
-<% end %>
-</ul>
+%ul#posts
+  - @posts.each do |post|
+    %li
+      .title 
+        %a{ :href => post.id }= "&ldquo;#{post.title}&rdquo;"
+      .meta= "&mdash; #{human_date post.published_on} / #{post.comments.size} comments"
+      .perex= post.perex
