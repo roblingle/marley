@@ -1,7 +1,12 @@
 %ul#posts
   - @posts.each do |post|
     %li
-      .title 
-        %a{ :href => post.id }= "&ldquo;#{post.title}&rdquo;"
-      .meta= "&mdash; #{human_date post.published_on} / #{post.comments.size} comments"
-      .perex= post.perex
+      %span.meta.date= "#{human_date post.published_on}"
+      %span.title 
+        %a{ :href => post.id }= post.title
+      %span.meta.comments= "#{post.comments.size} comments"
+      .intro
+        = post.intro
+        %a.continue{ :href => post.id } Keep reading
+= disqus_code
+= disqus_comment_count

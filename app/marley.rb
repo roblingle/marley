@@ -71,15 +71,44 @@ helpers do
   def error
     File.read( File.join( File.dirname(__FILE__), 'public', '500.html') )
   end
+  
+  def disqus_code
+    "<div id='disqus_thread'></div><script type='text/javascript' src='http://disqus.com/forums/#{CONFIG['blog']['disqus']}/embed.js'></script><noscript><a href='http://#{CONFIG['blog']['disqus']}.disqus.com/?url=ref'>View the discussion thread.</a></noscript><a href='http://disqus.com' class='dsq-brlink'>blog comments powered by <span class='logo-disqus'>Disqus</span></a>"
+  end
+  
+  def disqus_comment_count
+    <<-HERE
+    <script type="text/javascript">
+    //<![CDATA[
+    (function() {
+    		var links = document.getElementsByTagName('a');
+    		var query = '?';
+    		for(var i = 0; i < links.length; i++) {
+    			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+    				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+    			}
+    		}
+    		document.write('<script type="text/javascript" src="http://disqus.com/forums/#{CONFIG['blog']['disqus']}/get_num_replies.js' + query + '"></' + 'script>');
+    	})();
+    //]]>
+    </script>
+    HERE
+  end
 
 end
 
 # -----------------------------------------------------------------------------
 
 get '/' do
-  @posts = Marley::Post.published
-  @page_title = "#{CONFIG['blog']['title']}"
+  @posts = Marley::Post.front_page
+  @page_title = "#{CONFIG['blog']['title']} :: #{CONFIG['blog']['author']} talks about stuff"
   haml :index
+end
+
+get '/archive' do
+  @posts = Marley::Post.published
+  @page_title = "#{CONFIG['blog']['title']} :: #{CONFIG['blog']['author']} talks about stuff"
+  haml :archive
 end
 
 get '/feed' do
