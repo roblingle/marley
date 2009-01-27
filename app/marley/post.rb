@@ -6,7 +6,7 @@ module Marley
   # Data source is Marley::Configuration::DATA_DIRECTORY (set in <tt>config.yml</tt>)
   class Post
     
-    attr_reader :id, :title, :perex, :body, :body_html, :meta, :published_on, :updated_on, :published, :comments
+    attr_reader :id, :title, :intro, :body, :body_html, :meta, :published_on, :updated_on, :published, :comments
     
     # comments are referenced via +has_many+ in Comment
     
@@ -22,6 +22,10 @@ module Marley
     
       def published(options={})
         self.find_all options.merge(:draft => false)
+      end
+      
+      def front_page(options={})
+        self.published[0..(CONFIG['blog']['front_page_articles']-1)]
       end
   
       def [](id, options={})
@@ -87,7 +91,7 @@ module Marley
       dirname       = File.dirname(file).split('/').last
       file_content  = File.read(file)
       meta_content  = file_content.slice!( self.regexp[:meta] )
-      body          = file_content.sub( self.regexp[:title], '').sub( self.regexp[:perex], '').strip
+      body          = file_content.sub( self.regexp[:title], '').sub( self.regexp[:intro], '').strip
       post          = Hash.new
 
       post[:id]           = dirname.sub(self.regexp[:id], '\1').sub(/\.draft$/, '')
@@ -95,8 +99,8 @@ module Marley
       post[:title]        = file_content.scan( self.regexp[:title] ).first.to_s.strip if post[:title].nil?
       post[:published_on] = DateTime.parse( post[:published_on] ) rescue File.mtime( File.dirname(file) )
 
-      post[:perex]        = file_content.scan( self.regexp[:perex] ).first.to_s.strip unless options[:except].include? 'perex' or
-                                                                                      not options[:only].include? 'perex'
+      post[:intro]        = file_content.scan( self.regexp[:intro] ).first.to_s.strip unless options[:except].include? 'intro' or
+                                                                                      not options[:only].include? 'intro'
       post[:body]         = body                                                      unless options[:except].include? 'body' or
                                                                                       not options[:only].include? 'body'
       post[:body_html]    = RDiscount::new( body ).to_html                            unless options[:except].include? 'body_html' or
@@ -116,7 +120,7 @@ module Marley
         :title => /^#\s*(.*)\s+$/,
         :title_with_date => /^#\s*(.*)\s+\(([0-9\/]+)\)$/,
         :published_on => /.*\s+\(([0-9\/]+)\)$/,
-        :perex => /^([^\#\n]+\n)$/, 
+        :intro => /^([^\#\n]+\n)$/, 
         :meta  => /^\{\{\n(.*)\}\}\n$/mi # Multiline Regexp 
       } 
     end

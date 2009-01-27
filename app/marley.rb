@@ -40,6 +40,10 @@ helpers do
   include Rack::Utils
   alias_method :h, :escape_html
 
+  def partial(page, options={})
+    haml page, options.merge!(:layout => false)
+  end
+
   def markup(string)
     RDiscount::new(string).to_html
   end
@@ -93,8 +97,8 @@ end
 get '/:post_id' do
   @post = Marley::Post[ params[:post_id] ]
   throw :halt, [404, not_found ] unless @post
-  @page_title = "#{@post.title} #{CONFIG['blog']['name']}"
-  haml :post 
+  @page_title = "#{@post.title} :: #{CONFIG['blog']['title']}"
+  haml :post
 end
 
 post '/:post_id/comments' do
