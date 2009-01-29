@@ -27,8 +27,6 @@
   
     #content= yield
     
-    #sidebar= partial :sidebar
-
     #footer= partial :footer
 
   - if CONFIG['ga_code'] && Sinatra.env == :production
