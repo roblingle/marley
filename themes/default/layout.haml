@@ -5,11 +5,7 @@
   %meta{:http_equiv => 'Content-Type', :content => 'text/html; charset=utf-8'}
   %title= h(@page_title)
   %link{:rel => "stylesheet", :href => "/style.css", :type => "text/css", :media => "all"}
-  /[if IE]
-    %style
-      height:auto !important;
-      height:500px;
-
+ 
   %link{:rel => 'alternative', :title => "Articles", :type => 'application/atom+xml', :href=>"http://#{hostname}/feed"}
   %link{:rel => 'alternative', :title => "Comments", :type => 'application/atom+xml', :href=>"http://#{hostname}/feed/comments"}
 

@@ -15,4 +15,7 @@
   
   %h2.comments
 
-  /.comments= disqus_comments
+  #disqus_thread
+  %script{ :type => "text/javascript", :src => "http://disqus.com/forums/#{CONFIG['blog']['disqus']}/embed.js" }
+  %noscript
+    %a{ :href => "http://#{CONFIG['blog']['disqus']}.disqus.com/?url=ref" } View the discussion thread.

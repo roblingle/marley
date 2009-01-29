@@ -72,10 +72,6 @@ helpers do
     File.read( File.join( File.dirname(__FILE__), 'public', '500.html') )
   end
   
-  def disqus_comments
-    "<div id='disqus_thread'></div><script type='text/javascript' src='http://disqus.com/forums/#{CONFIG['blog']['disqus']}/embed.js'></script><noscript><a href='http://#{CONFIG['blog']['disqus']}.disqus.com/?url=ref'>View the discussion thread.</a></noscript><a href='http://disqus.com' class='dsq-brlink'>blog comments powered by <span class='logo-disqus'>Disqus</span></a>"
-  end
-  
   def disqus_comment_count
     <<-HERE
     <script type="text/javascript">
