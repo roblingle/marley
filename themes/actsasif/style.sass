@@ -85,26 +85,23 @@ a
     :border-bottom 1px solid #505050
 
   #content
+    :width 650px
+    :padding 20px 15px 20px 0
+    :float left
+    :height 100%
+    :color #505050
+    :border-right 1px solid #c0c0c0
+    :min-height 400px
+    
+    .meta
+      :font-size 80%
     
     #posts
-      :width 650px
-      :margin-right 10px
-      :padding 20px 15px 20px 0
-      :float left
-      :height 100%
-      :color #505050
-      :border-right 1px solid #c0c0c0
-      
-      a
-        :padding 0
         
       .title
         :font-size 120%
         :text-decoration none
         :font-weight bold
-
-      .meta
-        :font-size 80%
 
       .date
         :display none
@@ -116,15 +113,33 @@ a
       :color #202020
       :margin-top 5px
 
+    #post
+    
+      h2
+        :margin 0px
+      
+      .meta
+        :margin 5px 0
+
   #sidebar
     :color #404040
-    :padding-top 25px
+    :padding-top 20px
     :width 250px
     :float left
     :font-size 90%
+          
+    h4
+      :margin 0
+      :padding 2px 0
+      :border-bottom 1px solid #c0c0c0
+      :text-align center
+
+    p,ul
+      :margin-left 10px
     
-    p.bio
-      :margin-top 0px
+    a.twitter
+      :font-size 80%
+      
     
   #footer
     :clear both
@@ -134,3 +149,4 @@ a
     :color #505050
     :font-size 10pt
     :padding 2px 0
+    :margin-bottom 15px
