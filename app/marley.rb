@@ -36,7 +36,7 @@ configure :production do
 end
 
 helpers do
-  
+
   include Rack::Utils
   alias_method :h, :escape_html
 
@@ -47,7 +47,7 @@ helpers do
   def markup(string)
     RDiscount::new(string).to_html
   end
-  
+
   def human_date(datetime)
     datetime.strftime('%b %d \'%y').gsub(/ 0(\d{1})/, ' \1')
   end
@@ -71,7 +71,7 @@ helpers do
   def error
     File.read( File.join( File.dirname(__FILE__), 'public', '500.html') )
   end
-  
+
   def disqus_comment_count
     <<-HERE
     <script type="text/javascript">
@@ -144,7 +144,7 @@ post '/:post_id/comments' do
     haml :post
   end
 end
-get '/:post_id/comments' do 
+get '/:post_id/comments' do
   redirect "/"+params[:post_id].to_s+'#comments'
 end
 

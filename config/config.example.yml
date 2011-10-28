@@ -1,13 +1,13 @@
 blog:
   title: "My Cool Blog"                   # Displayed as <title> throughout
   name:  "My Cool Blog"                   # Displayed in the site's masthead
-  author: "Jonny Gamble"                  # Used in feeds                   
+  author: "Jonny Gamble"                  # Used in feeds
   email:  "jg@cooldomain.com"             # Used in feeds
   email_in_words: "jg at cooldomain.com"  # Spell it out
   front_page_articles:  4                 # Number of articles that go on the front page
   disqus: "jonnygamble"
   twitter: "jonnygamble"
-  
+
 ga_code: ""
 
 # Set this relatively to application main ("marley") directory
@@ -17,7 +17,7 @@ data_directory: "./data"
 github_token: ~
 
 # See http://soakedandsoaped.com/articles/2006/10/01/how-to-protect-a-rails-application-against-spam-with-akismet
-akismet: 
+akismet:
   key: "7a304ded74ce"
   url: "cooldomain.com" # "roblingle.wordpress.com"
 
@@ -25,5 +25,5 @@ akismet:
 typekey_antispam:
   key: "FDhH7kudGOGz2RCR9UCU"
   url: "cooldomain.com" #
-  
+
 theme: "default"

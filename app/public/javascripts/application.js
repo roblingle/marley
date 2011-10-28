@@ -11,28 +11,28 @@ log = { debug : function(msg) { if ('undefined' != typeof DEBUG && DEBUG == true
 
 // * Application namespace
 Application = {
-  
+
   initialize: function(options) {
-    
+
     this.options = options
     this.window = document.viewport.getDimensions()
-        
+
     // # Debug
     log.debug(this)
   },
 
   // --------- Utils --------------------------------------------------------------------
-  
+
   Utils : {
-    
+
     preloadImages : function(images) {
       for( var i=0; i < images.length; i++) { img = new Image(); img.src = 'images/'+images[i]; }
     },
-    
-    isIE6 : function() { 
-      return navigator.appVersion.include('MSIE 6');  
+
+    isIE6 : function() {
+      return navigator.appVersion.include('MSIE 6');
     }
-    
+
   }
-  
+
 };

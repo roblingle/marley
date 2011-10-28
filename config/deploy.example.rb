@@ -114,22 +114,22 @@ end
 # ----- Over-ride deploy tasks ------------------------------------------------
 
 namespace :deploy do
-  
+
   desc "Deploy new version of application on server"
   task :default, :roles => :app do
-    transaction do 
+    transaction do
       stop
       update
       start
     end
   end
-  
+
   desc "Deploy new application on server"
   task :cold do
     update
     start
   end
-  
+
   desc "Return to previous version"
   task :rollback do
     stop
@@ -137,17 +137,17 @@ namespace :deploy do
     start
   end
 
-  desc "Restart the webserver"  
+  desc "Restart the webserver"
   task :restart, :roles => :app do
      run "cd #{current_path}; rake server:restart"
   end
-  
-  desc "Start the webserver"  
+
+  desc "Start the webserver"
   task :start, :roles => :app do
      run "cd #{current_path}; rake server:start"
   end
-  
-  desc "Stop the webserver"  
+
+  desc "Stop the webserver"
   task :stop, :roles => :app do
      run "cd #{current_path}; rake server:stop"
   end

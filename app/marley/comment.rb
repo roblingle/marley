@@ -14,7 +14,7 @@ module Marley
     validates_presence_of :author, :email, :body, :post_id
 
     before_create :fix_urls, :check_spam
-    
+
     private
 
     # See http://railscasts.com/episodes/65-stopping-spam-with-akismet
@@ -33,7 +33,7 @@ module Marley
         :comment_content      => self.body
       }
     end
-    
+
     def check_spam
       self.checked = true
       self.spam = Akismetor.spam?(akismet_attributes)
@@ -45,7 +45,7 @@ module Marley
       return unless self.url
       self.url.gsub!(/^(.*)/, 'http://\1') unless self.url =~ %r{^http://} or self.url.empty?
     end
-    
+
   end
 
 end
