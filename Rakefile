@@ -30,7 +30,7 @@ namespace :app do
     desc "Create database for comments"
     task :create_database_for_comments do
       puts "* Creating comments SQLite database in #{Marley::Configuration::DATA_DIRECTORY}/comments.db"
-      ActiveRecord::Base.establish_connection( :adapter => 'sqlite3', 
+      ActiveRecord::Base.establish_connection( :adapter => 'sqlite3',
                                                :database => File.join(Marley::Configuration::DATA_DIRECTORY, 'comments.db')
                                              )
       load( File.join( MARLEY_ROOT, 'config', 'db_create_comments.rb' ) )
@@ -58,30 +58,30 @@ namespace :app do
   task :test do
     exec "cd app/test; ruby marley_test.rb"
   end
-  
+
 end
 
 namespace :data do
-  
+
   task :sync do
     # TODO : use Git
     exec "cap data:sync"
   end
-    
+
 end
 
 namespace :server do
-  
+
   task :start do
     exec "cd app; thin -R rackup.ru -d -P ../tmp/pids/thin.pid -l ../log/production.log -e production -p 4500 start"
   end
-  
+
   task :stop do
     exec "thin stop"
   end
-  
-  task :restart do 
+
+  task :restart do
     exec "thin restart"
   end
-  
+
 end

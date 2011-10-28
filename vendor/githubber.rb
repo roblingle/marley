@@ -33,7 +33,7 @@ class Githubber
       nil
     end
   end
-  
+
 end
 
 if $0 == __FILE__
