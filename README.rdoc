@@ -35,7 +35,7 @@ and rename it to <i>config.yml</i>.
 Install the application with this Rake task:
 
     rake app:install
-    
+
 Load this URL in your browser:
 
     http://localhost:4567
@@ -54,7 +54,7 @@ Of course, you have to ensure that there is at least some content on the server 
 == Synchronizing content
 
 Marley has no administrative interface for writing articles inside some silly <tt>textarea</tt>. It assumes you like to write in your favorite text editor, using Markdown, previewing on the fly, and just synchronize when you're ready to publish.
-  
+
 There are several ways how to do that:
 
 * You can be hardcore and write articles over SSH in Vim directly on the server for "just-in-time-publication" when you hit <tt>:w</tt>

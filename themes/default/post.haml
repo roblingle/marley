@@ -5,14 +5,14 @@
   %div.meta
     %span.date
       = human_date(@post.published_on)
-    &mdash; 
-    %span.comments 
+    &mdash;
+    %span.comments
       %a{ :href => "#comments" }= "#{@post.comments.size} comments"
 
   .intro= @post.intro
-  
+
   .body= @post.body_html
-  
+
   %h2.comments
 
   #disqus_thread

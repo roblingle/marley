@@ -1,5 +1,5 @@
 /* === Comment form === */
-#comment_form 
+#comment_form
   { color: #444444; }
 
 #comment_form label,
@@ -15,11 +15,11 @@
 #comment_form textarea
   { width: 50em; }
 #comment_form label
-  { color: #444; 
+  { color: #444;
     font-size: 85%;
     text-align: right;
   	width: 12em;
-  	padding-right: 10px; 
+  	padding-right: 10px;
   	padding-top: 0.5em; }
 #comment_form label.required
   { font-weight: bold; }
@@ -32,17 +32,17 @@
   { font-size: 85%;
     color: white;
     background-color: #F3292F;
-    margin: 0 0 0.2em 13em; 
-    padding: 0.3em; 
+    margin: 0 0 0.2em 13em;
+    padding: 0.3em;
     float: none;
-    clear: both; 
+    clear: both;
     width: 20%; }
 #comment_form.error label
   { color: #fb076e;
   	font-weight: bold; }
-#comment_form br 
+#comment_form br
   { clear: both; }
-#comment_form .submit 
+#comment_form .submit
   { float: left;
     margin-left: 44em;
     padding: 0 1em 0 0.5em; }

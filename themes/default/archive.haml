@@ -2,6 +2,6 @@
   - @posts.each do |post|
     %li
       %span.meta.date= "#{human_date post.published_on}"
-      %span.title 
+      %span.title
         %a{ :href => post.id }= post.title
       %span.meta.comments= "#{post.comments.size} comments"

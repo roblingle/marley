@@ -49,7 +49,7 @@ class MarleyTest < Test::Unit::TestCase
     get_it '/test-article.html'
     # p @response.body
     assert @response.status == 200
-    assert @response.body =~ Regexp.new( 
+    assert @response.body =~ Regexp.new(
            Regexp.escape("<h1>\n    This is the test article one\n    <span class=\"meta\">\n      23|12|2050") ),
            "HTML should contain valid <h1> title for post"
   end
